@@ -301,20 +301,20 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.lbl_headline.setText(_translate("MainWindow", "পাঠসূচি"))
-        self.lbl_category.setText(_translate("MainWindow", "ক্যাটাগরি"))
-        self.cmb_category.setCurrentText(_translate("MainWindow", "ক্যাটাগরি নির্বাচন করুন"))
-        self.cmb_category.setItemText(0, _translate("MainWindow", "ক্যাটাগরি নির্বাচন করুন"))
-        self.cmb_category.setItemText(1, _translate("MainWindow", "নাম শিখন (Noun)"))
-        self.cmb_category.setItemText(2, _translate("MainWindow", "ক্রিয়া শিখন (Verb)"))
-        self.cmb_category.setItemText(3, _translate("MainWindow", "সম্পর্ক শিখন (Association)"))
-        self.cmb_category.setItemText(4, _translate("MainWindow", "কর্মধারা শিখন (Activity)"))
-        self.lbl_lessons.setText(_translate("MainWindow", "পাঠসমূহ"))
-        self.cmb_lessons.setItemText(0, _translate("MainWindow", "পাঠ ক্রম নির্বাচন করুন"))
-        self.lbl_image.setText(_translate("MainWindow", "ছবি"))
-        self.lbl_image_text.setText(_translate("MainWindow", "পরিচয়"))
-        self.btn_add_new_lessons.setText(_translate("MainWindow", "নতুন পাঠ যুক্ত করুন"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Lesson Manager"))
+        self.lbl_headline.setText(_translate("MainWindow", "Lesson List"))
+        self.lbl_category.setText(_translate("MainWindow", "Category"))
+        self.cmb_category.setCurrentText(_translate("MainWindow", "Select category"))
+        self.cmb_category.setItemText(0, _translate("MainWindow", "Select category"))
+        self.cmb_category.setItemText(1, _translate("MainWindow", "Noun"))
+        self.cmb_category.setItemText(2, _translate("MainWindow", "Verb"))
+        self.cmb_category.setItemText(3, _translate("MainWindow", "Association"))
+        self.cmb_category.setItemText(4, _translate("MainWindow", "Activity"))
+        self.lbl_lessons.setText(_translate("MainWindow", "Lessons"))
+        self.cmb_lessons.setItemText(0, _translate("MainWindow", "Select lesson order"))
+        self.lbl_image.setText(_translate("MainWindow", "Image"))
+        self.lbl_image_text.setText(_translate("MainWindow", "Topic"))
+        self.btn_add_new_lessons.setText(_translate("MainWindow", "Add New Lesson"))
 
 
 if __name__ == "__main__":

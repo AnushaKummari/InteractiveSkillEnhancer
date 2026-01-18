@@ -27,7 +27,7 @@ class Student_Window(QWidget):  # Home extends QMainWindow
 
         # set window icon and title
         custom_form.setWindowIcon(QIcon("Frontend/Images/primary_logo.png"))
-        custom_form.setWindowTitle("তথ্য যুক্তকরণ উইন্ডো")
+        custom_form.setWindowTitle("Add Student Information")
 
         # connect the buttons
         form.btn_submit.clicked.connect(lambda: self.get_form_data(custom_form, form, -1))
@@ -80,11 +80,11 @@ class Student_Window(QWidget):  # Home extends QMainWindow
 
         # set window icon and title
         custom_form.setWindowIcon(QIcon("Frontend/Images/primary_logo.png"))
-        custom_form.setWindowTitle("তথ্য পরিবর্তনের উইন্ডো")
+        custom_form.setWindowTitle("Update Student Information")
 
         # change the heading and submit button text
-        form.lbl_heading.setText("শিক্ষার্থীর তথ্য আপডেট করুন")
-        form.btn_submit.setText("আপডেট করুন")
+        form.lbl_heading.setText("Update Student Info")
+        form.btn_submit.setText("Update")
         form.btn_submit.setShortcut("Return")
 
         try:
@@ -120,7 +120,7 @@ class Student_Window(QWidget):  # Home extends QMainWindow
                 custom_form, form, current_row, previous_id))
 
         except Exception as e:
-            show_warning_message("শিক্ষার্থীর তথ্য হালানাগাদকরণ", "শিক্ষার্থীর তথ্য হালনাগাদ করতে প্রথমে তালিকা থেকে একজন শিক্ষার্থী নামে ক্লিক করুন") 
+            show_warning_message("Student Update Error", "To update student info, first click a student from the list") 
             print("[Error] Student Info table UPDATE Failed - ", e)
             return
 

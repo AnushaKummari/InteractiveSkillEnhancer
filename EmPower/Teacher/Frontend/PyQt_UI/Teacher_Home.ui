@@ -152,7 +152,7 @@
              <string notr="true">color: rgb(26, 181, 219);</string>
             </property>
             <property name="text">
-             <string>শিক্ষার্থী নিবন্ধন</string>
+              <string>Student Registration</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -176,7 +176,7 @@
              <string notr="true">color: rgb(26, 181, 219);</string>
             </property>
             <property name="text">
-             <string>পাঠ্যসূচী</string>
+              <string>Curriculum</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -200,7 +200,7 @@
              <string notr="true">color: rgb(26, 181, 219);</string>
             </property>
             <property name="text">
-             <string>পাঠ মূল্যায়ন</string>
+              <string>Lesson Assessment</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -224,7 +224,7 @@
              <string notr="true">color: rgb(26, 181, 219);</string>
             </property>
             <property name="text">
-             <string>শিক্ষার্থীর পারফরম্যান্স</string>
+              <string>Student Performance</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -248,7 +248,7 @@
              <string notr="true">color: rgb(26, 181, 219);</string>
             </property>
             <property name="text">
-             <string>সেটিংস</string>
+              <string>Settings</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>

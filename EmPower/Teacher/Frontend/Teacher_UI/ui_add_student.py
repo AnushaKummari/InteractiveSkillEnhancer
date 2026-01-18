@@ -239,16 +239,16 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
-        self.lbl_heading.setText(_translate("Form", "শিক্ষার্থীর তথ্য প্রদান করুন"))
-        self.label.setText(_translate("Form", "শিক্ষার্থী আইডি"))
-        self.label_2.setText(_translate("Form", "শিক্ষার্থীর নাম "))
+        Form.setWindowTitle(_translate("Form", "Add Student"))
+        self.lbl_heading.setText(_translate("Form", "Provide Student Information"))
+        self.label.setText(_translate("Form", "Student ID"))
+        self.label_2.setText(_translate("Form", "Student Name "))
         self.input_name.setPlaceholderText(_translate("Form", " "))
-        self.label_3.setText(_translate("Form", "শিক্ষার্থীর বয়স"))
-        self.label_4.setText(_translate("Form", "ঠিকানা"))
-        self.label_5.setText(_translate("Form", "অভিভাবকের নাম"))
-        self.label_6.setText(_translate("Form", "অভিভাবকের মোবাইল নম্বর"))
-        self.btn_submit.setText(_translate("Form", "তথ্য যুক্ত করুন "))
+        self.label_3.setText(_translate("Form", "Student Age"))
+        self.label_4.setText(_translate("Form", "Address"))
+        self.label_5.setText(_translate("Form", "Guardian Name"))
+        self.label_6.setText(_translate("Form", "Guardian Phone Number"))
+        self.btn_submit.setText(_translate("Form", "Add Information"))
         self.btn_submit.setShortcut(_translate("Form", "Return"))
 
 

@@ -200,7 +200,7 @@ QPushButton:hover:!pressed
                 <string notr="true">color: rgb(0, 43, 91);</string>
                </property>
                <property name="text">
-                <string>পাঠসমূহ </string>
+                <string>Lessons</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
@@ -425,7 +425,7 @@ QPushButton:hover:!pressed
 border-radius: 15px;</string>
                </property>
                <property name="text">
-                <string>পাঠ ১</string>
+                <string>Lesson 1</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
@@ -612,7 +612,7 @@ QPushButton::hover {
 }</string>
                </property>
                <property name="text">
-                <string>নতুন লেসন তৈরি করুন</string>
+                <string>Create New Lesson</string>
                </property>
               </widget>
              </item>

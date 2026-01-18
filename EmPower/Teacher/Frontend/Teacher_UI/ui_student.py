@@ -293,21 +293,21 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "শিক্ষার্থীর তথ্যসমূহ "))
+        self.label.setText(_translate("MainWindow", "Student Information"))
         self.tableWidget.setSortingEnabled(True)
         item = self.tableWidget.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "শিক্ষার্থীর আইডি"))
+        item.setText(_translate("MainWindow", "Student ID"))
         item = self.tableWidget.horizontalHeaderItem(1)
-        item.setText(_translate("MainWindow", "শিক্ষার্থীর নাম"))
+        item.setText(_translate("MainWindow", "Student Name"))
         item = self.tableWidget.horizontalHeaderItem(2)
-        item.setText(_translate("MainWindow", "শিক্ষার্থীর বয়স "))
+        item.setText(_translate("MainWindow", "Age"))
         item = self.tableWidget.horizontalHeaderItem(3)
-        item.setText(_translate("MainWindow", "অভিভাবকের নাম"))
+        item.setText(_translate("MainWindow", "Guardian Name"))
         item = self.tableWidget.horizontalHeaderItem(4)
-        item.setText(_translate("MainWindow", "অভিভাবকের মোবাইল নম্বর"))
-        self.btn_add_new_student.setText(_translate("MainWindow", "নতুন শিক্ষার্থী যুক্ত করুন"))
-        self.btn_update_student_info.setText(_translate("MainWindow", "শিক্ষার্থীর তথ্য আপডেট করুন"))
-        self.btn_remove_student.setText(_translate("MainWindow", "শিক্ষার্থী এন্ট্রি বাতিল করুন"))
+        item.setText(_translate("MainWindow", "Guardian Mobile Number"))
+        self.btn_add_new_student.setText(_translate("MainWindow", "Add New Student"))
+        self.btn_update_student_info.setText(_translate("MainWindow", "Update Student Info"))
+        self.btn_remove_student.setText(_translate("MainWindow", "Remove Student Entry"))
 
 
 if __name__ == "__main__":

@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import os
 
 class PieChart:
     
@@ -34,16 +35,12 @@ class PieChart:
 
         # Equal aspect ratio ensures that pie is drawn as a circle
         ax.axis('equal')
+        # Ensure output temp directory exists
+        os.makedirs('.temp', exist_ok=True)
 
         # Save the figure as a PNG image
         plt.savefig(f'.temp/{self.fileName}', dpi=300, facecolor=ax.get_facecolor())
 
         
-labels = ['Label 1', 'Label 2', 'Label 3', 'Label 4', 'Label 5', 'Label 6']
-values = [25, 35, 15, 25, 29, 30]
-fileName = 'pie_chart.png'
-headline = 'Pie Chart Example'
-
-chart = PieChart(labels, values, fileName, headline)
-chart.create_chart()
+# Module provides PieChart class for use by the application. No top-level execution.
 

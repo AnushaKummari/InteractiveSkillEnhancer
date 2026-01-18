@@ -53,7 +53,7 @@ border-radius: 20px;</string>
          <string notr="true">color: rgb(143, 227, 207);</string>
         </property>
         <property name="text">
-         <string>শিক্ষার্থীর তথ্য প্রদান করুন</string>
+         <string>Provide Student Information</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -102,7 +102,7 @@ background-color:  rgb(43, 72, 101);
 color: rgb(137, 218, 199)</string>
         </property>
         <property name="text">
-         <string>শিক্ষার্থী আইডি</string>
+         <string>Student ID</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -160,7 +160,7 @@ background-color:  rgb(43, 72, 101);
 color: rgb(137, 218, 199)</string>
         </property>
         <property name="text">
-         <string>শিক্ষার্থীর নাম </string>
+         <string>Student Name</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -215,7 +215,7 @@ background-color:  rgb(43, 72, 101);
 color: rgb(137, 218, 199)</string>
         </property>
         <property name="text">
-         <string>শিক্ষার্থীর বয়স</string>
+         <string>Age</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -270,7 +270,7 @@ background-color:  rgb(43, 72, 101);
 color: rgb(137, 218, 199)</string>
         </property>
         <property name="text">
-         <string>ঠিকানা</string>
+         <string>Address</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -323,7 +323,7 @@ background-color:  rgb(43, 72, 101);
 color: rgb(137, 218, 199)</string>
         </property>
         <property name="text">
-         <string>অভিভাবকের নাম</string>
+         <string>Guardian Name</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -376,7 +376,7 @@ background-color:  rgb(43, 72, 101);
 color: rgb(137, 218, 199)</string>
         </property>
         <property name="text">
-         <string>অভিভাবকের মোবাইল নম্বর</string>
+         <string>Guardian Mobile Number</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -443,7 +443,7 @@ border: 3px solid rgb(0, 43, 91);
 }</string>
         </property>
         <property name="text">
-         <string>তথ্য যুক্ত করুন </string>
+         <string>Add Information</string>
         </property>
         <property name="shortcut">
          <string>Return</string>

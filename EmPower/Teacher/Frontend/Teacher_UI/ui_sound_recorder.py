@@ -135,10 +135,10 @@ class Ui_audioRecorderWidget(object):
 
     def retranslateUi(self, audioRecorderWidget):
         _translate = QtCore.QCoreApplication.translate
-        audioRecorderWidget.setWindowTitle(_translate("audioRecorderWidget", "Form"))
-        self.recordingTime.setText(_translate("audioRecorderWidget", "সময়..."))
-        self.fileName.setPlaceholderText(_translate("audioRecorderWidget", "অডিও ফাইলের নাম লিখুন"))
-        self.saveButton.setText(_translate("audioRecorderWidget", "সংরক্ষণ করুন"))
+        audioRecorderWidget.setWindowTitle(_translate("audioRecorderWidget", "Record Audio"))
+        self.recordingTime.setText(_translate("audioRecorderWidget", "Recording..."))
+        self.fileName.setPlaceholderText(_translate("audioRecorderWidget", "Enter audio file name"))
+        self.saveButton.setText(_translate("audioRecorderWidget", "Save"))
 
 
 if __name__ == "__main__":

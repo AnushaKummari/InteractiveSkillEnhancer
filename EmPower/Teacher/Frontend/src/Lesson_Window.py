@@ -4,6 +4,7 @@ from Frontend.src.Document_Formatter import *
 from Backend.Database.module_db import module_data as md
 from Backend.MediaRecorder import audioRecorder
 from PyQt5.QtCore import QTimer, QTime, Qt
+import re
 import os
 import shutil
 import glob
@@ -40,12 +41,12 @@ class Lesson_Window(QMainWindow):  # Home extends QMainWindow
         # disable the first option of lsb_cmb_category
         self.lesson_window.lsn_cmb_category.setItemData(0, 0, Qt.UserRole - 1)
 
-        # dictionary
+        # dictionary (category display names)
         self.categories = {
-            1: 'নাম_শিখন(Noun)',
-            2: 'ক্রিয়া_শিখন(Verb)',
-            3: 'সম্পর্ক_শিখন(Association)',
-            4: 'কর্মধারা_শিখন(Activity)'
+            1: 'Noun_Learning (Noun)',
+            2: 'Verb_Learning (Verb)',
+            3: 'Association_Learning (Association)',
+            4: 'Activity_Learning (Activity)'
         }
 
         self.videoFormat = ['mp4', 'avi', 'mkv',
@@ -71,7 +72,7 @@ class Lesson_Window(QMainWindow):  # Home extends QMainWindow
         # set window icon and title
         custom_form.setWindowIcon(
             QIcon("../Teacher/Frontend/Images/primary_logo.png"))
-        custom_form.setWindowTitle("নতুন লেসন তৈরি করুন")
+        custom_form.setWindowTitle("Create New Lesson")
 
         # connect buttons
         self.form.btn_select_photo.clicked.connect(self.manage_media)
@@ -148,7 +149,7 @@ class Lesson_Window(QMainWindow):  # Home extends QMainWindow
         # set window icon and title
         custom_form.setWindowIcon(
             QIcon("../Teacher/Frontend/Images/primary_logo.png"))
-        custom_form.setWindowTitle("অডিও রেকর্ড করুন")
+        custom_form.setWindowTitle("Record Audio")
 
         # before start recording
         self.audio_form.stopButton.setEnabled(False)
@@ -232,32 +233,34 @@ class Lesson_Window(QMainWindow):  # Home extends QMainWindow
 
         # !category must be selected
         if self.category_id == 0:
-            show_warning_message("সতর্কতা!!", "ক্যাটাগরি নির্বাচন করুন")
+            show_warning_message("Warning", "Please select a category")
             return
 
         # !lesson id and topic must be selected
         if self.lesson_id == "" or self.lesson_topic == "":
-            show_warning_message("সতর্কতা!!", "পাঠের নাম এবং পাঠ নম্বর দিন")
+            show_warning_message("Warning", "Please provide lesson name and lesson number")
             return
 
         # make a folder
-        self.folder_name = self.categories[self.category_id] + \
-            '_মডিউল_' + self.lesson_id
-        self.folder_location = 'Lessons/মডিউলসমূহ/' + self.folder_name
-        if os.path.exists(self.folder_location) == False:
-            os.mkdir(self.folder_location)
+        # create folder names in English so filesystem paths are consistent
+        # sanitize category name to filesystem-friendly format
+        safe_category = re.sub(r'[^A-Za-z0-9_\-]', '_', self.categories[self.category_id])
+        self.folder_name = f"{safe_category}_module_{self.lesson_id}"
+        self.folder_location = os.path.join('Lessons', 'modules', self.folder_name)
+        if not os.path.exists(self.folder_location):
+            os.makedirs(self.folder_location, exist_ok=True)
 
         # copy the image
         # !Show warning if any box of add lesson window is empty
         if self.media_file_name is None:
-            show_warning_message("সতর্কতা!!", "ছবি/ভিডিও নির্বাচন করুন")
+            show_warning_message("Warning", "Please select an image or video")
             return
 
         # check for video format
         if self.media_file_name.split('.')[1] not in self.videoFormat:
 
             if self.audio_location is None:
-                show_warning_message("সতর্কতা!!", "অডিও নির্বাচন করুন")
+                show_warning_message("Warning", "Please select an audio file")
                 return
 
             shutil.copy2(self.audio_location, self.folder_location +
@@ -281,14 +284,13 @@ class Lesson_Window(QMainWindow):  # Home extends QMainWindow
         data = [self.category_id, self.lesson_id,
                 self.lesson_topic, self.folder_location]
         md().add_entry(data)
-        
-        show_success_message("সফলতা!!", "পাঠ সংরক্ষণ করা হয়েছে, এখন স্ক্রিনের নিচে থাকা রিলোড বাটনে ক্লিক করুন")
-        
+        show_success_message("Success", "Lesson saved. Please click the Reload button at the bottom of the screen.")
+
         self.lesson_window.lsn_cmb_lessons.clear()
         # self.lesson_window.lsn_lbl_lesson_image.clear()
         # self.lesson_window.lsn_lbl_lesson_topic.clear()
         # self.lesson_window.lsn_cmb_category.setCurrentIndex(0)
-        
+
         childObj.hide()
 
     def load_lessons(self):
@@ -328,8 +330,8 @@ class Lesson_Window(QMainWindow):  # Home extends QMainWindow
                 self.lesson_window.lsn_cmb_lessons.addItem(str(lsn_id))
                 print("LSN: "+str(lsn_id))
         elif index > 0:
-            show_confirmation_message("লেসন যুক্ত হয়নি", "এখনো কোন লেসন এই ক্যাটাগরিতে যুক্ত করা হয়নি")
-            print(f"No lessons found for categoryc-> {self.current_category}")
+            show_confirmation_message("No lessons", "No lessons have been added for this category yet")
+            print(f"No lessons found for category -> {self.current_category}")
       
     def on_lesson_changed(self, index):       
         
@@ -386,15 +388,14 @@ class Lesson_Window(QMainWindow):  # Home extends QMainWindow
         print("Current Category: ", current_category)
         
         self.lesson_elements = md().load_table(index)
-        
-        if len(self.lesson_elements) > 0:
 
+        if len(self.lesson_elements) > 0:
             # category_wise_lesson = len(self.category_lesson_mappings[index])
             category_wise_lesson = len(self.lesson_elements)
             self.form.lbl_lsn_cat_status.setText(
-                f"এই ক্যাটেগরি তে মোট পাঠ সংখ্যা: {category_wise_lesson}, নতুন পাঠ {category_wise_lesson+1} থেকে শুরু করুন ")
+                f"Total lessons in this category: {category_wise_lesson}. Start the new lesson from {category_wise_lesson+1}.")
 
         else:
             self.form.lbl_lsn_cat_status.setText(
-                f"এই ক্যাটেগরি এখনো কোন পাঠ নেই, নতুন পাঠ 1 থেকে শুরু করুন")
+                f"No lessons exist in this category yet. Start with lesson 1.")
 

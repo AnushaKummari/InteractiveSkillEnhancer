@@ -53,7 +53,10 @@ class Ui_MainWindow(object):
             10, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         self.gridLayout.addItem(spacerItem1, 2, 0, 1, 1)
         self.frm_banner_pic = QtWidgets.QFrame(self.home_frame)
-        self.frm_banner_pic.setMaximumSize(QtCore.QSize(1200, 200))
+        #self.frm_banner_pic.setMaximumSize(QtCore.QSize(1200, 200))
+        self.frm_banner_pic.setMinimumHeight(260)
+        self.frm_banner_pic.setMaximumHeight(300)
+
         self.frm_banner_pic.setStyleSheet("border: none;")
         self.frm_banner_pic.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frm_banner_pic.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -67,9 +70,11 @@ class Ui_MainWindow(object):
         self.home_lbl_ban_picture.setText("")
         self.home_lbl_ban_picture.setPixmap(QtGui.QPixmap(
             ".\\Frontend\\PyQt_UI\\../Images/banner_logo.png"))
-        self.home_lbl_ban_picture.setScaledContents(False)
+        self.home_lbl_ban_picture.setScaledContents(True)
         self.home_lbl_ban_picture.setAlignment(QtCore.Qt.AlignCenter)
         self.home_lbl_ban_picture.setObjectName("home_lbl_ban_picture")
+        self.home_lbl_ban_picture.setMinimumHeight(260)
+
         self.verticalLayout_2.addWidget(self.home_lbl_ban_picture)
         self.gridLayout.addWidget(self.frm_banner_pic, 1, 0, 1, 1)
         self.frm_button = QtWidgets.QFrame(self.home_frame)
@@ -3271,104 +3276,104 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.std_lbl_headline.setText(_translate(
-            "MainWindow", "শিক্ষার্থীর তথ্যসমূহ "))
+            "MainWindow", "Student Information"))
         self.std_tableWidget.setSortingEnabled(True)
         item = self.std_tableWidget.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "শিক্ষার্থীর আইডি"))
+        item.setText(_translate("MainWindow", "Student ID"))
         item = self.std_tableWidget.horizontalHeaderItem(1)
-        item.setText(_translate("MainWindow", "শিক্ষার্থীর নাম"))
+        item.setText(_translate("MainWindow", "Student Name"))
         item = self.std_tableWidget.horizontalHeaderItem(2)
-        item.setText(_translate("MainWindow", "শিক্ষার্থীর বয়স "))
+        item.setText(_translate("MainWindow", "Student Age"))
         item = self.std_tableWidget.horizontalHeaderItem(3)
-        item.setText(_translate("MainWindow", "ঠিকানা"))
+        item.setText(_translate("MainWindow", "Address"))
         item = self.std_tableWidget.horizontalHeaderItem(4)
-        item.setText(_translate("MainWindow", "অভিভাবকের নাম"))
+        item.setText(_translate("MainWindow", "Guardian Name"))
         item = self.std_tableWidget.horizontalHeaderItem(5)
-        item.setText(_translate("MainWindow", "অভিভাবকের মোবাইল নম্বর"))
+        item.setText(_translate("MainWindow", "Guardian Phone"))
         self.std_btn_add_student.setText(_translate(
-            "MainWindow", "নতুন শিক্ষার্থী যুক্ত করুন"))
+            "MainWindow", "Add New Student"))
         self.std_btn_update_info.setText(_translate(
-            "MainWindow", "শিক্ষার্থীর তথ্য আপডেট করুন"))
+            "MainWindow", "Update Student Info"))
         self.std_btn_remove_student.setText(_translate(
-            "MainWindow", "শিক্ষার্থী এন্ট্রি বাতিল করুন"))
-        self.lsn_lbl_category.setText(_translate("MainWindow", "ক্যাটাগরি"))
+            "MainWindow", "Remove Student Entry"))
+        self.lsn_lbl_category.setText(_translate("MainWindow", "Category"))
         self.lsn_cmb_category.setCurrentText(
-            _translate("MainWindow", "ক্যাটাগরি নির্বাচন করুন"))
+            _translate("MainWindow", "Select category"))
         self.lsn_cmb_category.setItemText(0, _translate(
-            "MainWindow", "ক্যাটাগরি নির্বাচন করুন"))
+            "MainWindow", "Select category"))
         self.lsn_cmb_category.setItemText(
-            1, _translate("MainWindow", "নাম শিখন (Noun)"))
+            1, _translate("MainWindow", "Noun"))
         self.lsn_cmb_category.setItemText(
-            2, _translate("MainWindow", "ক্রিয়া শিখন (Verb)"))
+            2, _translate("MainWindow", "Verb"))
         self.lsn_cmb_category.setItemText(3, _translate(
-            "MainWindow", "সম্পর্ক শিখন (Association)"))
+            "MainWindow", "Association"))
         self.lsn_cmb_category.setItemText(4, _translate(
-            "MainWindow", "কর্মধারা শিখন (Activity)"))
-        self.lsn_lbl_lessons.setText(_translate("MainWindow", "পাঠসমূহ"))
+            "MainWindow", "Activity"))
+        self.lsn_lbl_lessons.setText(_translate("MainWindow", "Lessons"))
         self.lsn_cmb_lessons.setItemText(0, _translate(
-            "MainWindow", "পাঠ ক্রম নির্বাচন করুন"))
-        self.lsn_lbl_lesson_image.setText(_translate("MainWindow", "ছবি"))
-        self.lsn_lbl_lesson_topic.setText(_translate("MainWindow", "পরিচয়"))
+            "MainWindow", "Select lesson order"))
+        self.lsn_lbl_lesson_image.setText(_translate("MainWindow", "Image"))
+        self.lsn_lbl_lesson_topic.setText(_translate("MainWindow", "Topic"))
         self.lsn_btn_add_lessons.setText(
-            _translate("MainWindow", "নতুন মডিউল যুক্ত করুন"))
+            _translate("MainWindow", "Add New Module"))
         self.lsn_btn_make_lesson.setText(
-            _translate("MainWindow", "পাঠ তৈরি করুন"))
-        self.lsn_lbl_headline.setText(_translate("MainWindow", "পাঠসূচি"))
+            _translate("MainWindow", "Create Lesson"))
+        self.lsn_lbl_headline.setText(_translate("MainWindow", "Lesson List"))
         self.lsn_lbl_headline_2.setText(
-            _translate("MainWindow", "পাঠ মূল্যায়ন"))
-        self.task_btn_mcq.setText(_translate("MainWindow", "বহুনির্বচনী"))
-        self.task_btn_matching.setText(_translate("MainWindow", "শব্দ মিলাই"))
-        self.task_btn_sequence.setText(_translate("MainWindow", "ক্রমধারা"))
-        self.task_btn_puzzle.setText(_translate("MainWindow", "ধাঁধা"))
-        self.label_9.setText(_translate("MainWindow", "ধাঁধা"))
+            _translate("MainWindow", "Lesson Evaluation"))
+        self.task_btn_mcq.setText(_translate("MainWindow", "Multiple Choice"))
+        self.task_btn_matching.setText(_translate("MainWindow", "Word Match"))
+        self.task_btn_sequence.setText(_translate("MainWindow", "Sequence"))
+        self.task_btn_puzzle.setText(_translate("MainWindow", "Puzzle"))
+        self.label_9.setText(_translate("MainWindow", "Puzzle"))
         self.task_puzzle_q_set_lbl.setPlaceholderText(
-            _translate("MainWindow", "সেট নম্বর দিন (যেমন set1)"))
+            _translate("MainWindow", "Enter set number (e.g. set1)"))
         self.task_puzzle_save_set_btn.setText(
-            _translate("MainWindow", "সংরক্ষন করুন"))
+            _translate("MainWindow", "Save"))
         self.task_puzzle_image_lbl.setText(_translate(
-            "MainWindow", "ধাঁধার জন্য যেকোন একটি ছবি নির্বাচন করুন"))
+            "MainWindow", "Select an image for the puzzle"))
         self.task_puzzle_select_img_btn.setText(
-            _translate("MainWindow", "ছবি নির্বাচন করুন"))
+            _translate("MainWindow", "Select Image"))
         self.task_puzzle_show_set_btn.setText(_translate(
-            "MainWindow", "তৈরিকৃত ধাঁধার সেটগুলো দেখুন"))
+            "MainWindow", "Show created puzzle sets"))
         self.task_seq_img_seq_edit.setPlaceholderText(
-            _translate("MainWindow", "ক্রমিক নম্বর (যেমনঃ 1/2)"))
+            _translate("MainWindow", "Sequence number (e.g.: 1/2)"))
         self.task_seq_img_desc_edit.setPlaceholderText(
-            _translate("MainWindow", "ছবির সংক্ষিপ্ত বিবরণ (৩-৫ শব্দে)"))
+            _translate("MainWindow", "Image description (3-5 words)"))
         self.task_seq_img_save_btn.setText(
-            _translate("MainWindow", "সংরক্ষন করুন"))
+            _translate("MainWindow", "Save"))
         self.task_seq_img_save_btn.setShortcut(
             _translate("MainWindow", "Return"))
         self.task_seq_instruction_lbl.setText(_translate(
-            "MainWindow", 'প্রতি সেটের জন্য আমরা সর্বোচ্চ ৪টি ছবি নির্বাচন করুন। প্রতিটি ছবির জন্য \"সংক্ষিপ্ত বিবরণ" এবন "ক্রমিক নং\" লিখুন। উল্লেখ্য প্রতি সেটের জন্য (৪টি ছবি) \"ধারার বিষয়বস্তু শুধু ১ বার লিখতে হবে\"। '))
+            "MainWindow", 'For each set select up to 4 images. For each image enter a short description and a sequence number. For each set, write the sequence topic only once.'))
         self.task_seq_set_lbl.setPlaceholderText(_translate(
-            "MainWindow", "ধারার বিষয়বস্তু লিখুন (যেমনঃ ফুল গাছে পানি দেয়া)"))
-        self.label_8.setText(_translate("MainWindow", "ক্রমধারা "))
+            "MainWindow", "Enter sequence topic (e.g., watering a plant)"))
+        self.label_8.setText(_translate("MainWindow", "Sequence"))
         self.task_matching_img_desc_edit_2.setPlaceholderText(
-            _translate("MainWindow", "ছবির সংক্ষিপ্ত বিবরণ (৩-৫ শব্দে)"))
+            _translate("MainWindow", "Image description (3-5 words)"))
         self.task_matching_img_desc_edit_3.setPlaceholderText(
-            _translate("MainWindow", "ছবির সংক্ষিপ্ত বিবরণ (৩-৫ শব্দে)"))
+            _translate("MainWindow", "Image description (3-5 words)"))
         self.task_matching_img_desc_edit_4.setPlaceholderText(
-            _translate("MainWindow", "ছবির সংক্ষিপ্ত বিবরণ (৩-৫ শব্দে)"))
+            _translate("MainWindow", "Image description (3-5 words)"))
         self.task_matching_img_desc_edit_1.setPlaceholderText(
-            _translate("MainWindow", "ছবির সংক্ষিপ্ত বিবরণ (৩-৫ শব্দে)"))
-        self.label_10.setText(_translate("MainWindow", "শব্দ মিলাই"))
+            _translate("MainWindow", "Image description (3-5 words)"))
+        self.label_10.setText(_translate("MainWindow", "Word Match"))
         self.task_matching_set_edit.setPlaceholderText(
-            _translate("MainWindow", "সেট নম্বর দিন (যেমন set1)"))
+            _translate("MainWindow", "Enter set number (e.g., set1)"))
         self.task_matching_save_set_btn.setText(
-            _translate("MainWindow", "সংরক্ষন করুন"))
-        self.label_13.setText(_translate("MainWindow", "প্রশ্ন"))
+            _translate("MainWindow", "Save"))
+        self.label_13.setText(_translate("MainWindow", "Question"))
         self.task_mcq_new_set_btn.setText(
-            _translate("MainWindow", "নতুন প্রশ্ন সেট"))
-        self.label_14.setText(_translate("MainWindow", "বহুনির্বচনী"))
+            _translate("MainWindow", "New Question Set"))
+        self.label_14.setText(_translate("MainWindow", "Multiple Choice"))
         self.task_mcq_question_edit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                                        "p, li { white-space: pre-wrap; }\n"
                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
                                                        "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7.8pt;\"><br /></p></body></html>"))
         self.task_mcq_next_ques_btn.setText(
-            _translate("MainWindow", "পরবর্তী প্রশ্ন "))
-        self.label_22.setText(_translate("MainWindow", "সেট নম্বর"))
+            _translate("MainWindow", "Next Question"))
+        self.label_22.setText(_translate("MainWindow", "Set Number"))
         self.task_mcq_set_no_edit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                                      "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                                      "p, li { white-space: pre-wrap; }\n"
@@ -3379,7 +3384,7 @@ class Ui_MainWindow(object):
                                                        "p, li { white-space: pre-wrap; }\n"
                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:15pt; font-weight:400; font-style:normal;\">\n"
                                                        "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7.8pt;\"><br /></p></body></html>"))
-        self.label_20.setText(_translate("MainWindow", "ঘ"))
+        self.label_20.setText(_translate("MainWindow", "D"))
         self.task_mcq_option_1_edit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                                        "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                                        "p, li { white-space: pre-wrap; }\n"
@@ -3390,9 +3395,9 @@ class Ui_MainWindow(object):
                                                        "p, li { white-space: pre-wrap; }\n"
                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:15pt; font-weight:400; font-style:normal;\">\n"
                                                        "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7.8pt;\"><br /></p></body></html>"))
-        self.label_17.setText(_translate("MainWindow", "ক"))
-        self.label_18.setText(_translate("MainWindow", "খ"))
-        self.label_21.setText(_translate("MainWindow", "সঠিক উত্তর"))
+        self.label_17.setText(_translate("MainWindow", "A"))
+        self.label_18.setText(_translate("MainWindow", "B"))
+        self.label_21.setText(_translate("MainWindow", "Correct Answer"))
         self.task_mcq_correct_option_edit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                                              "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                                              "p, li { white-space: pre-wrap; }\n"
@@ -3403,89 +3408,89 @@ class Ui_MainWindow(object):
                                                        "p, li { white-space: pre-wrap; }\n"
                                                        "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:15pt; font-weight:400; font-style:normal;\">\n"
                                                        "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:7.8pt;\"><br /></p></body></html>"))
-        self.label_19.setText(_translate("MainWindow", "গ"))
+        self.label_19.setText(_translate("MainWindow", "C"))
         self.task_mcq_finish_set_btn.setText(
-            _translate("MainWindow", "সেট শেষ করুন"))
+            _translate("MainWindow", "Finish Set"))
         self.task_mcq_upload_img_btn.setText(
-            _translate("MainWindow", "ছবি নির্বাচন করুন"))
-        self.lsn_lbl_headline_4.setText(_translate("MainWindow", "পাঠসূচি"))
+            _translate("MainWindow", "Select Image"))
+        self.lsn_lbl_headline_4.setText(_translate("MainWindow", "Lesson List"))
         self.label_4.setText(_translate(
-            "MainWindow", "সকল পাঠসমূহ দেখার জন্য নিচের আইকনে ক্লিক করুন"))
+            "MainWindow", "Click the icon below to view all lessons"))
         self.label_3.setText(_translate(
-            "MainWindow", "মডিউল যুক্ত করা শেষ হলে \"পাঠ তৈরি সম্পন্ন করুন\" বাটনে প্রেস করুন"))
+            "MainWindow", "When module addition is complete press the 'Finish Creating Lesson' button"))
         self.label_2.setText(_translate(
-            "MainWindow", "সিলেক্টেড কোন মডিউল বাতিল করার করার জন্য নিচের ঐ মডিউলটি সিলেক্ট করে \"সিলেকশন বাতিল করুন\" বাটনে প্রেস করুন"))
+            "MainWindow", "To cancel a selected module, select it and press the 'Cancel Selection' button"))
         item = self.lsn_module_table_widget.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "মডিউলের নাম"))
+        item.setText(_translate("MainWindow", "Module Name"))
         item = self.lsn_module_table_widget.horizontalHeaderItem(1)
-        item.setText(_translate("MainWindow", "মডিউলের বিবরণ "))
+        item.setText(_translate("MainWindow", "Module Description"))
         self.label.setText(_translate(
-            "MainWindow", "নতুন পাঠে মডিউল যুক্ত করার জন্য শুধুমাত্র \"মডিউল নাম\" এর উপর ক্লিক করে \"নতুন পাঠের মডিউল সমূহ\"  উইন্ডোতে ড্র্যাগ করুন"))
+            "MainWindow", "To add modules to a new lesson, click on the 'Module Name' and drag it into the 'New Lesson Modules' window"))
         self.lsn_btn_remove_module.setText(
-            _translate("MainWindow", "সিলেকশন বাতিল করুন"))
+            _translate("MainWindow", "Cancel Selection"))
         self.lsn_lbl_lessons_5.setText(_translate(
-            "MainWindow", "নতুন পাঠের মডিউল সমূহ"))
+            "MainWindow", "New Lesson Modules"))
         self.lsn_btn_finish_add_module.setText(
-            _translate("MainWindow", "পাঠ তৈরি সম্পন্ন করুন"))
+            _translate("MainWindow", "Finish Creating Lesson"))
         self.lsn_lbl_lessons_3.setText(
-            _translate("MainWindow", "মডিউলের তালিকাসমূহ"))
+            _translate("MainWindow", "Module Lists"))
         self.lsn_lbl_lessons_4.setText(
-            _translate("MainWindow", "নতুন পাঠ তৈরির নিয়ম"))
+            _translate("MainWindow", "New Lesson Creation Rules"))
         self.lsn_btn_see_lessons.setText(
-            _translate("MainWindow", "পাঠসমূহ দেখুন"))
+            _translate("MainWindow", "See Lessons"))
         self.lsn_lbl_headline_5.setText(
-            _translate("MainWindow", "পাঠ প্রদানের রেকর্ড"))
+            _translate("MainWindow", "Lesson Delivery Records"))
         self.lsn_lbl_lessons_6.setText(_translate(
-            "MainWindow", "পাঠ প্রদানের বিস্তারিত তালিকা"))
+            "MainWindow", "Detailed Lesson Delivery List"))
         item = self.lsn_table_assigning_lessons.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "শিক্ষার্থীর আইডি "))
+        item.setText(_translate("MainWindow", "Student ID "))
         item = self.lsn_table_assigning_lessons.horizontalHeaderItem(1)
-        item.setText(_translate("MainWindow", "শিক্ষার্থীর নাম"))
+        item.setText(_translate("MainWindow", "Student Name"))
         item = self.lsn_table_assigning_lessons.horizontalHeaderItem(2)
-        item.setText(_translate("MainWindow", "পাঠ নং  "))
+        item.setText(_translate("MainWindow", "Lesson No"))
         item = self.lsn_table_assigning_lessons.horizontalHeaderItem(3)
-        item.setText(_translate("MainWindow", "বহুনির্বচনি সেট"))
+        item.setText(_translate("MainWindow", "MCQ Set"))
         item = self.lsn_table_assigning_lessons.horizontalHeaderItem(4)
-        item.setText(_translate("MainWindow", "ধাধার সেট"))
+        item.setText(_translate("MainWindow", "Puzzle Set"))
         item = self.lsn_table_assigning_lessons.horizontalHeaderItem(5)
-        item.setText(_translate("MainWindow", "ধারার সেট "))
+        item.setText(_translate("MainWindow", "Sequence Set "))
         item = self.lsn_table_assigning_lessons.horizontalHeaderItem(6)
-        item.setText(_translate("MainWindow", "শব্দ মিলানো\'র সেট"))
+        item.setText(_translate("MainWindow", "Matching Set"))
         item = self.lsn_table_assigning_lessons.horizontalHeaderItem(7)
-        item.setText(_translate("MainWindow", "পাঠ প্রদানের সময়কাল"))
+        item.setText(_translate("MainWindow", "Lesson Delivery Duration"))
         self.lsn_lbl_lessons_8.setText(_translate(
-            "MainWindow", "শিক্ষার্থীদের তালিকা"))
+            "MainWindow", "Student List"))
         self.lsn_btn_assign_lesson.setText(
-            _translate("MainWindow", "পাঠ প্রদান করুন"))
+            _translate("MainWindow", "Assign Lesson"))
         self.lsn_lbl_headline_6.setText(_translate(
-            "MainWindow", "শিক্ষার্থীর পারফরম্যান্স"))
+            "MainWindow", "Student Performance"))
         self.label_11.setText(_translate(
-            "MainWindow", "শিক্ষার্থী নির্বাচন করুন"))
+            "MainWindow", "Select Student"))
         self.performance_std_id_cmb.setItemText(
-            0, _translate("MainWindow", "সিলেক্ট করুন"))
+            0, _translate("MainWindow", "Select"))
         self.performance_lesson_btn.setText(
-            _translate("MainWindow", "পাঠ সংক্রান্ত ডেটা"))
+            _translate("MainWindow", "Lesson Data"))
         self.performance_module_btn.setText(
-            _translate("MainWindow", "মডিউল সংক্রান্ত ডেটা"))
+            _translate("MainWindow", "Module Data"))
         self.performance_eval_btn.setText(_translate(
-            "MainWindow", "মূল্যায়ন সংক্রান্ত ডেটা"))
-        self.label_12.setText(_translate("MainWindow", "নির্দেশনাঃ \n"
-                                         "১। প্রথমে শিক্ষার্থী নির্বাচন করুন\n"
-                                         "২। এরপর পাঠ অথবা মূল্যায়ন যেকোন একটি অপশন নির্বাচন করুন \n"
-                                         "৩। এরপর পাশের বক্সে থাকা বাটন গুলোতে ক্লিক করে নির্ধারিত গ্রাফ দেখুন\n"
-                                         "৪। সম্পূর্ণ রিপোর্ট দেখতে চাইলে নিচের বাটনে ক্লিক করুন"))
+            "MainWindow", "Evaluation Data"))
+        self.label_12.setText(_translate("MainWindow", "Instructions:\n"
+                                         "1. Select a student\n"
+                                         "2. Then choose either Lesson or Evaluation\n"
+                                         "3. Click the buttons in the adjacent box to view the graphs\n"
+                                         "4. Click the button below to generate the full report"))
         self.performance_report_btn.setText(
-            _translate("MainWindow", "রিপোর্ট তৈরি করুন"))
+            _translate("MainWindow", "Generate Report"))
         self.p_lesson_id_cmb.setItemText(
-            0, _translate("MainWindow", "পাঠ নির্বাচন করুন"))
+            0, _translate("MainWindow", "Select Lesson"))
         self.p_eval_puzzle_btn.setText(
-            _translate("MainWindow", "ধাঁধা সংক্রান্ত"))
+            _translate("MainWindow", "Puzzle Evaluation"))
         self.p_eval_seq_btn.setText(_translate(
-            "MainWindow", "ক্রমধারা সংক্রান্ত"))
+            "MainWindow", "Sequence Evaluation"))
         self.p_eval_matching_btn.setText(
-            _translate("MainWindow", "শব্দ মিলানো সংক্রান্ত"))
+            _translate("MainWindow", "Matching Evaluation"))
         self.p_eval_mcq_btn.setText(_translate(
-            "MainWindow", "বহুনির্বচনী সংক্রান্ত"))
+            "MainWindow", "MCQ Evaluation"))
 
 
 if __name__ == "__main__":

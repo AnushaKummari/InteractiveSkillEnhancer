@@ -237,7 +237,7 @@ background-color: rgb(231, 231, 231);</string>
          <set>Qt::AlignCenter</set>
         </property>
         <property name="placeholderText">
-         <string>অডিও ফাইলের নাম লিখুন</string>
+         <string>Enter audio file name</string>
         </property>
        </widget>
       </item>
@@ -317,7 +317,7 @@ background-color: rgb(25, 76, 91);
 }</string>
         </property>
         <property name="text">
-         <string>সংরক্ষণ করুন</string>
+         <string>Save</string>
         </property>
        </widget>
       </item>

@@ -137,7 +137,7 @@ QPushButton:hover:!pressed
           <string notr="true">color: #8FE3CF</string>
          </property>
          <property name="text">
-          <string>শিক্ষার্থীর তথ্যসমূহ </string>
+          <string>Student Information</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -271,7 +271,7 @@ QTableWidget {
          </attribute>
          <column>
           <property name="text">
-           <string>শিক্ষার্থীর আইডি</string>
+           <string>Student ID</string>
           </property>
           <property name="font">
            <font>
@@ -285,7 +285,7 @@ QTableWidget {
          </column>
          <column>
           <property name="text">
-           <string>শিক্ষার্থীর নাম</string>
+           <string>Student Name</string>
           </property>
           <property name="font">
            <font>
@@ -299,7 +299,7 @@ QTableWidget {
          </column>
          <column>
           <property name="text">
-           <string>শিক্ষার্থীর বয়স </string>
+           <string>Age</string>
           </property>
           <property name="font">
            <font>
@@ -313,7 +313,7 @@ QTableWidget {
          </column>
          <column>
           <property name="text">
-           <string>অভিভাবকের নাম</string>
+           <string>Guardian Name</string>
           </property>
           <property name="font">
            <font>
@@ -327,7 +327,7 @@ QTableWidget {
          </column>
          <column>
           <property name="text">
-           <string>অভিভাবকের মোবাইল নম্বর</string>
+           <string>Guardian Mobile Number</string>
           </property>
           <property name="font">
            <font>
@@ -418,7 +418,7 @@ QPushButton::hover {
 }</string>
          </property>
          <property name="text">
-          <string>নতুন শিক্ষার্থী যুক্ত করুন</string>
+          <string>Add New Student</string>
          </property>
          <property name="icon">
           <iconset>
@@ -485,7 +485,7 @@ QPushButton::hover {
 }</string>
          </property>
          <property name="text">
-          <string>শিক্ষার্থীর তথ্য আপডেট করুন</string>
+          <string>Update Student Information</string>
          </property>
          <property name="icon">
           <iconset>
@@ -550,7 +550,7 @@ QPushButton::hover {
 }</string>
          </property>
          <property name="text">
-          <string>শিক্ষার্থী এন্ট্রি বাতিল করুন</string>
+          <string>Remove Student Entry</string>
          </property>
          <property name="icon">
           <iconset>

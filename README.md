@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 > Software Project Lab 2
 
 # EmPower - Interactive Learning Tool for Autistic Children 🌟
@@ -147,3 +148,7 @@ Created by:
 - feel free to contact us!
 
 ## EmPower is designed to empower both teachers and students, offering an inclusive and effective learning experience for autistic children. 🌈
+=======
+# InteractiveSkillEnhancer
+A personalised learning tool for autistic children that enhances communication, social interaction, and learning skills through interactive, engaging, and adaptive activities. This project provides tailored lesson plans, progress tracking, and real-time feedback for children with Autism Spectrum Disorder (ASD). 
+>>>>>>> e9c1ec88ac25afa585a5341a38c3b883e6a2a3e4

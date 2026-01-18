@@ -34,6 +34,7 @@ from Frontend.src.Lesson_Window import Lesson_Window
 from Frontend.src.Student_Window import Student_Window
 from Frontend.src.Task_Window import Task_Window
 from Frontend.Teacher_UI import ui_home_page
+from PyQt5.QtGui import QBrush
 
 
 class Home(QMainWindow):  # Home extends QMainWindow
@@ -64,10 +65,14 @@ class Home(QMainWindow):  # Home extends QMainWindow
 
         # set window icon and title
         # TODO: Show the window at the middle of the screen
-        # self.setGeometry(480, 270, 0, 0)
-        self.setWindowIcon(QIcon("Frontend/Images/primary_logo.png"))
-        self.setWindowTitle("শিখবে সবাই")
-        set_drop_shadow(self.home.home_btn_student)
+            # self.setGeometry(480, 270, 0, 0)
+            self.setWindowIcon(QIcon("Frontend/Images/primary_logo.png"))
+            self.setWindowTitle("Learning for All")
+            
+            # Add background image to dashboard
+            self._apply_dashboard_background()
+            
+            set_drop_shadow(self.home.home_btn_student)
         set_drop_shadow(self.home.home_btn_lesson)
         set_drop_shadow(self.home.home_btn_quiz)
         set_drop_shadow(self.home.home_btn_progress)
@@ -92,7 +97,7 @@ class Home(QMainWindow):  # Home extends QMainWindow
 
         # set window icon and title
         self.setWindowIcon(QIcon("Frontend/Images/primary_logo.png"))
-        self.setWindowTitle("শিক্ষার্থীর তথ্য")
+        self.setWindowTitle("Student Information")
 
         # reload table data
         self.student_window.reload_table()
@@ -113,8 +118,8 @@ class Home(QMainWindow):  # Home extends QMainWindow
     def lesson_page(self):
 
         os.path.exists('Lessons') or os.mkdir('Lessons')
-        os.path.exists('Lessons/মডিউলসমূহ') or os.mkdir('Lessons/মডিউলসমূহ')
-        os.path.exists('Lessons/পাঠসমূহ') or os.mkdir('Lessons/পাঠসমূহ')
+        os.path.exists('Lessons/modules') or os.mkdir('Lessons/modules')
+        os.path.exists('Lessons/lessons') or os.mkdir('Lessons/lessons')
 
         # create table for lesson info
         md().create_table()
@@ -124,7 +129,7 @@ class Home(QMainWindow):  # Home extends QMainWindow
 
         # set window icon and title
         self.setWindowIcon(QIcon("Frontend/Images/primary_logo.png"))
-        self.setWindowTitle("পাঠের মডিউলসমূহ")
+        self.setWindowTitle("Lesson Modules")
 
         # Navigate between windows
         self.home.mediaStackWidget.setCurrentWidget(self.home.image_page)
@@ -203,7 +208,7 @@ class Home(QMainWindow):  # Home extends QMainWindow
 
         # set window icon and title
         self.setWindowIcon(QIcon("Frontend/Images/primary_logo.png"))
-        self.setWindowTitle("পাঠ তৈরি করুন")
+        self.setWindowTitle("Create Lesson")
 
         # Navigate between windows
         self.home.stackedWidget.setCurrentWidget(self.home.lesson_making_page)
@@ -233,7 +238,7 @@ class Home(QMainWindow):  # Home extends QMainWindow
 
         # set window icon and title
         self.setWindowIcon(QIcon("Frontend/Images/primary_logo.png"))
-        self.setWindowTitle("পাঠ বরাদ্দের তালিকা")
+        self.setWindowTitle("Lesson Assignment List")
 
         # navigate between windows
         self.home.stackedWidget.setCurrentWidget(
@@ -303,16 +308,15 @@ class Home(QMainWindow):  # Home extends QMainWindow
 
         # check if any filed is empty
         if image_description == "" or image_set == "":
-            show_warning_message("ফিল্ড অসম্পূর্ণ", "সব ফিল্ড পূরণ করুন")
+            show_warning_message("Incomplete Field", "Please fill all fields")
             return
 
         # make a directory mentioned in image_set
-        if not os.path.exists('Lessons/Sequence_Images/{}'.format(image_set)) and not image_set in existing_folders:
+        if not os.path.exists('Lessons/Sequence_Images/{}'.format(image_set)) and image_set not in existing_folders:
             os.mkdir('Lessons/Sequence_Images/{}'.format(image_set))
-
         elif image_set in existing_folders and self.sequence_image_count == 0:
             show_warning_message(
-                "সেট নাম ইতিমধ্যে ব্যবহৃত", "এই নামের একটি সেট ইতিমধ্যে ব্যবহৃত হয়েছে, অন্য নাম ব্যবহার করুন")
+                "Set Name Already Used", "A set with this name already exists; please use a different name")
             return
 
         # check if 4 image is selected or not
@@ -320,7 +324,7 @@ class Home(QMainWindow):  # Home extends QMainWindow
             shutil.move(current_saved_image_path, 'Lessons/Sequence_Images/{}/{}_{}.png'.format(
                 image_set, self.sequence_image_count+1, image_description))
             show_confirmation_message(
-                "সম্পূর্ণ হয়েছে", "{} সেটের ৪ টি ছবি নির্বাচন করা হয়েছে, নতুন ছবি অন্য সেটে যোগ করতে পারেন".format(image_set))
+                "Completed", "4 images have been selected for set {}. To add images to a new set choose a different set.".format(image_set))
 
             # reset all fields
             self.home.task_seq_img_desc_edit.clear()
@@ -352,7 +356,7 @@ class Home(QMainWindow):  # Home extends QMainWindow
             # save images to specific set
             shutil.move(current_saved_image_path, 'Lessons/Sequence_Images/{}/{}_{}.png'.format(
                 image_set, self.sequence_image_count, image_description))
-            show_warning_message("ছবি নির্বাচন শেষ হয়নি", "আরো {} ছবি নির্বাচন করতে হবে".format(
+            show_warning_message("Image Selection Incomplete", "Please select {} more images".format(
                 4 - self.sequence_image_count))
 
             # save data to json
@@ -395,7 +399,7 @@ class Home(QMainWindow):  # Home extends QMainWindow
             for file_name in file_names:
                 names += file_name.split("/")[-1] + "\n"
 
-            names += "ছবি সংরক্ষন করার জন্য উপরে সেট নম্বর লিখুন এবং \'সংরক্ষন করুন\' বাটনে ক্লিক করুন।"
+            names += "To save images, enter a set number above and click the 'Save' button."
             self.home.task_puzzle_image_lbl.setText(names)
 
             # copy image files
@@ -425,15 +429,15 @@ class Home(QMainWindow):  # Home extends QMainWindow
         if os.path.exists('Lessons/Puzzle_Images/{}'.format(puzzle_set)) == False:
             os.rename('Lessons/Puzzle_Images/.temp',
                       'Lessons/Puzzle_Images/{}'.format(puzzle_set))
-            self.home.task_puzzle_image_lbl.setText("ছবি {} ফোল্ডারে সংরক্ষণ করা হয়েছে।{} নতুন ফোল্ডারে সংরক্ষণের জন্য পুনরায় ছবি নির্বাচন করুন".format(
-                self.home.task_puzzle_q_set_lbl.text(), '\n'))
+            self.home.task_puzzle_image_lbl.setText("Images have been saved to folder {}. To save to a different folder select images again.".format(
+                self.home.task_puzzle_q_set_lbl.text()))
 
             self.home.task_puzzle_q_set_lbl.clear()
             show_success_message(
-                "ছবি সংরক্ষন সম্পন্ন হয়েছে", "সংরক্ষন সম্পন্ন")
+                "Images Saved", "Save completed")
 
         else:
-            show_warning_message("ফোল্ডার ইতোমধ্যে তৈরি করা হয়েছে", "{} ফোল্ডার ইতোমধ্যে তৈরি করা হয়েছে! নতুন সেট নম্বর নির্বাচন করুন".format(
+            show_warning_message("Folder Exists", "Folder {} already exists! Choose a new set number".format(
                 self.home.task_puzzle_q_set_lbl.text()))
 
     def show_puzzle_set(self):
@@ -504,7 +508,7 @@ class Home(QMainWindow):  # Home extends QMainWindow
         img_desc_3 = self.home.task_matching_img_desc_edit_3.text()
         img_desc_4 = self.home.task_matching_img_desc_edit_4.text()
 
-        # check if corresponding images's description are filledup
+        # check if corresponding images' descriptions are filled up
         for item in self.current_matching_set:
 
             set_id = item.split('_')[-1].split('.')[0]
@@ -512,22 +516,22 @@ class Home(QMainWindow):  # Home extends QMainWindow
             if set_id == '1':
                 if img_desc_1 == "":
                     show_warning_message(
-                        "বর্ণনা পূরণ করুন", "{} নং ছবির সংক্ষিপ্ত বর্ণনা পূরণ করুন".format(set_id))
+                        "Fill Description", "Please provide a short description for image number {}".format(set_id))
                     return False
             elif set_id == '2':
                 if img_desc_2 == "":
                     show_warning_message(
-                        "বর্ণনা পূরণ করুন", "{} নং ছবির সংক্ষিপ্ত বর্ণনা পূরণ করুন".format(set_id))
+                        "Fill Description", "Please provide a short description for image number {}".format(set_id))
                     return False
             elif set_id == '3':
                 if img_desc_3 == "":
                     show_warning_message(
-                        "বর্ণনা পূরণ করুন", "{} নং ছবির সংক্ষিপ্ত বর্ণনা পূরণ করুন".format(set_id))
+                        "Fill Description", "Please provide a short description for image number {}".format(set_id))
                     return False
             elif set_id == '4':
                 if img_desc_4 == "":
                     show_warning_message(
-                        "বর্ণনা পূরণ করুন", "{} নং ছবির সংক্ষিপ্ত বর্ণনা পূরণ করুন".format(set_id))
+                        "Fill Description", "Please provide a short description for image number {}".format(set_id))
                     return False
 
         # create a new folder according to set name provided
@@ -535,13 +539,13 @@ class Home(QMainWindow):  # Home extends QMainWindow
 
         # check if set name is provided
         if matching_set_name == "":
-            show_warning_message("সেট নাম পূরণ করুন", "সেট নাম পূরণ করুন")
+            show_warning_message("Set Name Missing", "Please provide a set name")
             return False
 
         # check if set name already exists
         if os.path.exists('Lessons/Matching_Images/{}'.format(matching_set_name)):
-            show_warning_message("সেট নাম পুনরায় লিখুন",
-                                 "এই নামে একটি সেট আগে থেকেই রয়েছে")
+            show_warning_message("Set Name Exists",
+                                 "A set with this name already exists")
             return False
         else:
             os.mkdir('Lessons/Matching_Images/{}'.format(matching_set_name))
@@ -601,11 +605,11 @@ class Home(QMainWindow):  # Home extends QMainWindow
         set_items = len(os.listdir(
             'Lessons/Matching_Images/{}'.format(matching_set_name)))
         if set_items <= 1:
-            show_warning_message("পর্যাপ্ত ছবি নেই", "সেটে ৪টি ছবি থাকতে হবে")
+            show_warning_message("Insufficient Images", "A set must contain 4 images")
             shutil.rmtree(
                 'Lessons/Matching_Images/{}'.format(matching_set_name))
         else:
-            show_success_message("সেট সংরক্ষণ সম্পন্ন", "{} সেট সংরক্ষণ সম্পন্ন হয়েছে".format(
+            show_success_message("Set Saved", "Set {} saved successfully".format(
                 matching_set_name.split('_')[-1]))
             os.startfile('Lessons\Matching_Images\{}'.format(
                 matching_set_name))  # ! always use \ for relative path
@@ -632,21 +636,21 @@ class Home(QMainWindow):  # Home extends QMainWindow
         # if set name is not provided
         if self.home.task_mcq_set_no_edit.toPlainText() == "":
             show_confirmation_message(
-                "সেট নম্বর অনুপস্থিত", "সেট নম্বর প্রদান করুন এবং 'নতুন প্রশ্ন সেট বাটনে ক্লিক করুন।")
+                "Set Number Missing", "Please provide a set number and click the 'New Question Set' button.")
             return False
 
         # make a subfolder inside the mcq_questions folder
         if os.path.exists(f"Lessons/MCQ_Questions/{set_no}"):
             sets = os.listdir('Lessons/MCQ_Questions')
             show_warning_message(
-                "সেট নাম পুনরায় লিখুন", "এই নামে একটি সেট আগে থেকেই রয়েছে। বর্তমানে বিদ্যমান সেটগুলো হল : {}".format(sets))
+                "Set Name Exists", "A set with this name already exists. Existing sets: {}".format(sets))
             return False
         else:
             os.mkdir(f"Lessons/MCQ_Questions/{set_no}")
 
         # basic instruction
         show_confirmation_message(
-            "প্রশ্ন সেট তৈরি", "এখন প্রশ্ন এবং সম্ভাব্য উত্তরসমূহ প্রদান করুন। নতুন প্রশ্ন তৈরির করতে 'পরবর্তী প্রশ্ন' বাটনে ক্লিক করুন।")
+            "Question Set Created", "Now provide questions and options. To add the next question click the 'Next Question' button.")
 
         ques_no = str(self.total_mcq_questions)
 
@@ -683,7 +687,7 @@ class Home(QMainWindow):  # Home extends QMainWindow
 
         if self.mcq_questions == {}:
             show_warning_message(
-                "কোন প্রশ্ন নেই", "কোন প্রশ্ন নেই যার উত্তর সংরক্ষণ করা যাবে")
+                "No Questions", "There are no questions to save.")
             return False
 
         # get the set name
@@ -707,7 +711,7 @@ class Home(QMainWindow):  # Home extends QMainWindow
 
         # show message
         show_confirmation_message(
-            "সেট সংরক্ষণ সম্পন্ন", f"MCQ {set_no} সেট সংরক্ষণ সম্পন্ন হয়েছে। নতুন প্রশ্ন সেট তৈরির জন্য 'প্রশ্ন সেট তৈরি' বাটনে ক্লিক করুন।")
+            "Set Saved", f"MCQ {set_no} saved successfully. To create a new question set click the 'Create Question Set' button.")
 
         # disable buttons
         self.home.task_mcq_finish_set_btn.setEnabled(False)
@@ -723,7 +727,7 @@ class Home(QMainWindow):  # Home extends QMainWindow
     def upload_mcq_image(self):
         # Open dialog to select an image
         img_path = QFileDialog.getOpenFileName(
-            self, "ছবি নির্বাচন করুন", "", "Image Files (*.png *.jpg *.jpeg)")[0]
+            self, "Select Image", "", "Image Files (*.png *.jpg *.jpeg)")[0]
         if img_path != '':
             self.current_mcq_image_path = img_path
             shutil.copy2(
@@ -747,8 +751,8 @@ class Home(QMainWindow):  # Home extends QMainWindow
 
         # Check if any of the edit boxes are empty
         if question == "" or option_1 == "" or option_2 == "" or option_3 == "" or option_4 == "" or correct_answer == "":
-            show_warning_message("প্রশ্ন সম্পন্ন করুন",
-                                 "সকল অপশনসমূহ প্রদান করুন")
+            show_warning_message("Complete Question",
+                                 "Please provide all options and select correct answer")
             return
 
         # Store the current question and options in the dictionary
@@ -1182,6 +1186,19 @@ class Home(QMainWindow):  # Home extends QMainWindow
 
         except Exception as e:
             print(e)
+
+    def _apply_dashboard_background(self):
+        """Apply background image to the dashboard"""
+        # Get the background image path
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        bg_path = os.path.join(current_dir, '../Images/dashboard_bg.png')
+        
+        # Apply background image if it exists
+        if os.path.exists(bg_path):
+            bg_pixmap = QPixmap(bg_path)
+            palette = self.palette()
+            palette.setBrush(QPalette.Background, QBrush(bg_pixmap))
+            self.setPalette(palette)
 
         # open Report folder
         os.startfile('Reports')

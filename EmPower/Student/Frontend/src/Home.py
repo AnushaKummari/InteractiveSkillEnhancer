@@ -32,7 +32,7 @@ class Home(QMainWindow):  # Home extends QMainWindow
         self.lesson_completion_data = {}
         
         # file paths
-        self.lesson_completion_file_location = 'Lesson_log\.lesson_completion_log.json'
+        self.lesson_completion_file_location = 'Lesson_log/lesson_completion_log.json'
         
         # create studentinfo folder
         os.path.exists('Student_Info') or os.makedirs('Student_Info')
@@ -51,7 +51,7 @@ class Home(QMainWindow):  # Home extends QMainWindow
         flag = False 
         
         #get student roll number
-        with open ('Student_Info\.student_details.json') as f:
+        with open('Student_Info/student_details.json') as f:
             data = json.load(f)
             std_roll = data['id']
 
@@ -103,7 +103,7 @@ class Home(QMainWindow):  # Home extends QMainWindow
         
         # connect buttons
         self.home.n_proceed_btn.clicked.connect(self.puzzle_page)
-        movie = QMovie(r"Frontend\Images\how_to_puzzle.gif")
+        movie = QMovie("Frontend/Images/how_to_puzzle.gif")
         self.home.n_type_lbl.setScaledContents(True)
         self.home.n_type_lbl.setMovie(movie)
         movie.start()
@@ -262,7 +262,7 @@ class Home(QMainWindow):  # Home extends QMainWindow
         
         print("Celebration Page")
                
-        movie = QMovie(r"Frontend\Images\celebration.gif")
+        movie = QMovie("Frontend/Images/celebration.gif")
         self.home.c_gif.setMovie(movie)
         movie.start()
         
@@ -301,12 +301,12 @@ class Home(QMainWindow):  # Home extends QMainWindow
             
             
             # read the student detaisl json file to fetch the name and id
-            with open('Student_Info\.student_details.json') as json_file:
+            with open('Student_Info/student_details.json') as json_file:
                 data = json.load(json_file)
                 student_name = data['name']
                 student_id = data['id']
                 
-            with open('Lesson_log\.current_lesson_log.json') as json_file:
+            with open('Lesson_log/current_lesson_log.json') as json_file:
                 data = json.load(json_file)
                 lsn_attempt = data['lessons'][self.current_lesson_id]['attempt']
                 lsn_time = data['lessons'][self.current_lesson_id]['time']
@@ -338,11 +338,11 @@ class Home(QMainWindow):  # Home extends QMainWindow
             os.makedirs(performance_folder_name)
             
             # copy all the files from the current lesson folder to the new folder
-            shutil.copy2(self.lesson_completion_file_location,performance_folder_name)
-            shutil.copy2('Performance\matching_results.json',performance_folder_name)
-            shutil.copy2('Performance\puzzle_results.json',performance_folder_name)
-            shutil.copy2('Performance\sequencing_results.json',performance_folder_name)
-            shutil.copy2('Performance\mcq_results.json',performance_folder_name)
+            shutil.copy2(self.lesson_completion_file_location, performance_folder_name)
+            shutil.copy2('Performance/matching_results.json', performance_folder_name)
+            shutil.copy2('Performance/puzzle_results.json', performance_folder_name)
+            shutil.copy2('Performance/sequencing_results.json', performance_folder_name)
+            shutil.copy2('Performance/mcq_results.json', performance_folder_name)
             shutil.copy2('surveillance_log.json', performance_folder_name)
                   
     def closeEvent(self, event):
