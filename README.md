@@ -121,34 +121,16 @@ cb Student
 python3 main.pyw
 ```
 
-## Video Demo 📹
-
-- Teacher
-  
-
-https://github.com/ahmedfahad04/SPL-2/assets/60494055/95c44663-5371-45b7-9a38-d849fd09ef0c
 
 
 
-- Student
 
 
 
-https://github.com/ahmedfahad04/SPL-2/assets/60494055/c42ce17a-0d58-45c8-b914-fd1d85c80a0c
 
 
-
-## Contact 📞
-
-Created by:
-
-1. [Istiaq Ahmed Fahad](https://github.com/ahmedfahad04)
-2. [Kamruzzaman Asif](https://github.com/KamruzzamanAsif)
-
-- feel free to contact us!
 
 ## EmPower is designed to empower both teachers and students, offering an inclusive and effective learning experience for autistic children. 🌈
 =======
 # InteractiveSkillEnhancer
 A personalised learning tool for autistic children that enhances communication, social interaction, and learning skills through interactive, engaging, and adaptive activities. This project provides tailored lesson plans, progress tracking, and real-time feedback for children with Autism Spectrum Disorder (ASD). 
->>>>>>> e9c1ec88ac25afa585a5341a38c3b883e6a2a3e4
